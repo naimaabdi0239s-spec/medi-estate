@@ -364,32 +364,31 @@ function Contact() {
             </div>
           </form>
 
-          <div className="reveal p-6 border" style={{ borderColor: "rgba(27,75,102,0.2)", background: "#F2E4CC" }}>
+          <div className="reveal p-6 border flex flex-col" style={{ borderColor: "rgba(27,75,102,0.2)", background: "#F2E4CC" }}>
             <p className="font-mono-eyebrow mb-4" style={{ color: "#1B4B66" }}>OFFICE HOURS</p>
             <ul className="text-sm space-y-3" style={{ color: "#1F2E38" }}>
               <li className="flex justify-between border-b pb-2" style={{ borderColor: "rgba(31,46,56,0.15)" }}><span>Sunday — Thursday</span><span className="font-mono-eyebrow">9:00 – 19:00</span></li>
               <li className="flex justify-between border-b pb-2" style={{ borderColor: "rgba(31,46,56,0.15)" }}><span>Friday</span><span className="font-mono-eyebrow">14:00 – 19:00</span></li>
               <li className="flex justify-between border-b pb-2" style={{ borderColor: "rgba(31,46,56,0.15)" }}><span>Saturday</span><span className="font-mono-eyebrow">10:00 – 17:00</span></li>
-              <li className="pt-2 text-xs" style={{ color: "rgba(31,46,56,0.65)" }}>Private viewings available outside these hours by appointment.</li>
+              <li className="pt-1 text-xs" style={{ color: "rgba(31,46,56,0.65)" }}>Private viewings available outside these hours by appointment.</li>
             </ul>
-          </div>
-        </div>
 
-        {/* Row 2: Contact info */}
-        <div className="reveal mt-6 p-6 border" style={{ borderColor: "rgba(27,75,102,0.2)", background: "#F2E4CC" }}>
-          <p className="font-mono-eyebrow mb-4" style={{ color: "#1B4B66" }}>CONTACT INFORMATION</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm" style={{ color: "#1F2E38" }}>
-            <div>
-              <p className="font-mono-eyebrow text-[10px] mb-1" style={{ color: "#7A6B52" }}>PHONE</p>
-              <p>+971 4 555 8210</p>
-            </div>
-            <div>
-              <p className="font-mono-eyebrow text-[10px] mb-1" style={{ color: "#7A6B52" }}>EMAIL</p>
-              <p>hello@mediestate.ae</p>
-            </div>
-            <div>
-              <p className="font-mono-eyebrow text-[10px] mb-1" style={{ color: "#7A6B52" }}>OFFICE</p>
-              <p>Jumeirah Bay, Villa 14<br />Dubai, UAE</p>
+            <div className="mt-6 pt-6 border-t" style={{ borderColor: "rgba(31,46,56,0.15)" }}>
+              <p className="font-mono-eyebrow mb-4" style={{ color: "#1B4B66" }}>CONTACT</p>
+              <ul className="text-sm space-y-3" style={{ color: "#1F2E38" }}>
+                <li className="flex justify-between gap-3">
+                  <span className="font-mono-eyebrow text-[10px]" style={{ color: "#7A6B52" }}>PHONE</span>
+                  <span>+971 4 555 8210</span>
+                </li>
+                <li className="flex justify-between gap-3">
+                  <span className="font-mono-eyebrow text-[10px]" style={{ color: "#7A6B52" }}>EMAIL</span>
+                  <span>hello@mediestate.ae</span>
+                </li>
+                <li className="flex justify-between gap-3">
+                  <span className="font-mono-eyebrow text-[10px]" style={{ color: "#7A6B52" }}>OFFICE</span>
+                  <span className="text-right">Jumeirah Bay, Villa 14<br />Dubai, UAE</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
