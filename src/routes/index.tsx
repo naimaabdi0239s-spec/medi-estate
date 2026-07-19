@@ -65,18 +65,23 @@ function Hero() {
   const headline = ["The", "Leading", "Real", "Estate", "Company", "in", "the", "UAE"];
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
-      <img
-        src={heroImg}
-        alt="Coastal villa at dusk"
+      <video
+        src={heroVideo.url}
+        poster={heroImg}
+        autoPlay
+        loop
+        muted
+        playsInline
         className="absolute inset-0 h-full w-full object-cover"
-        width={1920}
-        height={1200}
       />
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(27,75,102,0.55) 0%, rgba(31,46,56,0.55) 60%, rgba(31,46,56,0.75) 100%)" }} />
       <Nav />
       <div className="relative z-20 min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 pb-16" style={{ color: "#F2E4CC" }}>
-        <p className="font-mono-eyebrow mb-6 hero-fade" style={{ animationDelay: "1.8s", color: "#7FB6D9" }}>
-          EST. 2011 — DUBAI · ABU DHABI · RAS AL KHAIMAH
+        <p className="font-mono-eyebrow hero-fade" style={{ animationDelay: "1.8s", color: "#7FB6D9" }}>
+          EST. 2011
+        </p>
+        <p className="font-mono-eyebrow mt-2 mb-6 hero-fade" style={{ animationDelay: "1.9s", color: "#7FB6D9" }}>
+          DUBAI · ABU DHABI · RAS AL KHAIMAH
         </p>
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02] max-w-5xl">
           {headline.map((w, i) => (
