@@ -108,7 +108,7 @@ function Hero() {
 function About() {
   const ref = useReveal();
   return (
-    <section id="about" ref={ref} className="py-[52px] px-6" style={{ background: "#F2E4CC" }}>
+    <section id="about" ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-2xl mx-auto text-center">
         <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>ABOUT MEDI ESTATE</p>
         <h2 className="reveal mt-4 font-display text-4xl md:text-5xl leading-tight" style={{ color: "#1F2E38" }}>
@@ -128,7 +128,7 @@ function About() {
 function Featured() {
   const ref = useReveal();
   return (
-    <section id="properties" ref={ref} className="py-[52px] px-6" style={{ background: "#E8D6AE" }}>
+    <section id="properties" ref={ref} className="py-10 px-6" style={{ background: "#E8D6AE" }}>
       <div className="max-w-7xl mx-auto">
         <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
           <div>
@@ -233,7 +233,7 @@ function Why() {
     { icon: <Anchor />, title: "Settled locally", body: "Our agents live in the neighbourhoods they sell. They pick up the phone." },
   ];
   return (
-    <section ref={ref} className="py-[52px] px-6" style={{ background: "#F2E4CC" }}>
+    <section ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10">
           <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>WHY MEDI ESTATE</p>
@@ -257,7 +257,7 @@ function Why() {
 
 function Stats() {
   return (
-    <section className="py-[52px] px-6" style={{ background: "#1B4B66", color: "#F2E4CC" }}>
+    <section className="py-10 px-6" style={{ background: "#1B4B66", color: "#F2E4CC" }}>
       <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {[
           { n: "1,240+", l: "HOMES SOLD" },
@@ -278,7 +278,7 @@ function Stats() {
 function Gallery() {
   const ref = useReveal();
   return (
-    <section id="gallery" ref={ref} className="py-[52px] px-6" style={{ background: "#E8D6AE" }}>
+    <section id="gallery" ref={ref} className="py-10 px-6" style={{ background: "#E8D6AE" }}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
           <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>GALLERY</p>
@@ -314,7 +314,7 @@ function Testimonials() {
     { quote: "Sold our Saadiyat villa above asking. They knew the buyer before they knew the property.", name: "Leila H.", place: "Seller, Saadiyat Island" },
   ];
   return (
-    <section id="testimonials" ref={ref} className="py-[52px] px-6" style={{ background: "#F2E4CC" }}>
+    <section id="testimonials" ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10">
           <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>TESTIMONIALS</p>
@@ -341,7 +341,7 @@ function Testimonials() {
 function Contact() {
   const ref = useReveal();
   return (
-    <section id="contact" ref={ref} className="py-[52px] px-6" style={{ background: "#E8D6AE" }}>
+    <section id="contact" ref={ref} className="py-10 px-6" style={{ background: "#E8D6AE" }}>
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
           <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>GET IN TOUCH</p>
