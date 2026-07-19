@@ -268,9 +268,9 @@ function Stats() {
           { n: "AED 6.8B", l: "TRANSACTED VALUE" },
           { n: "38", l: "AGENTS IN-HOUSE" },
         ].map((s, i) => (
-          <div key={i}>
-            <p className="font-display text-5xl md:text-6xl" style={{ color: "#F2E4CC" }}>{s.n}</p>
-            <p className="font-mono-eyebrow mt-2" style={{ color: "#7FB6D9" }}>{s.l}</p>
+          <div key={i} className="flex flex-col items-center">
+            <p className="font-display text-4xl md:text-5xl tabular-nums" style={{ color: "#F2E4CC", fontVariantNumeric: "tabular-nums", lineHeight: 1 }}>{s.n}</p>
+            <p className="font-mono-eyebrow mt-3" style={{ color: "#7FB6D9" }}>{s.l}</p>
           </div>
         ))}
       </div>
