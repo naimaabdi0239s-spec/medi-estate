@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import heroImg from "@/assets/hero.jpg";
+import heroVideo from "@/assets/hero-video.mp4.asset.json";
 import prop1 from "@/assets/prop1.jpg";
 import prop2 from "@/assets/prop2.jpg";
 import prop3 from "@/assets/prop3.jpg";
@@ -64,18 +65,23 @@ function Hero() {
   const headline = ["The", "Leading", "Real", "Estate", "Company", "in", "the", "UAE"];
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
-      <img
-        src={heroImg}
-        alt="Coastal villa at dusk"
+      <video
+        src={heroVideo.url}
+        poster={heroImg}
+        autoPlay
+        loop
+        muted
+        playsInline
         className="absolute inset-0 h-full w-full object-cover"
-        width={1920}
-        height={1200}
       />
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(27,75,102,0.55) 0%, rgba(31,46,56,0.55) 60%, rgba(31,46,56,0.75) 100%)" }} />
       <Nav />
       <div className="relative z-20 min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 pb-16" style={{ color: "#F2E4CC" }}>
-        <p className="font-mono-eyebrow mb-6 hero-fade" style={{ animationDelay: "1.8s", color: "#7FB6D9" }}>
-          EST. 2011 — DUBAI · ABU DHABI · RAS AL KHAIMAH
+        <p className="font-mono-eyebrow hero-fade" style={{ animationDelay: "1.8s", color: "#7FB6D9" }}>
+          EST. 2011
+        </p>
+        <p className="font-mono-eyebrow mt-2 mb-6 hero-fade" style={{ animationDelay: "1.9s", color: "#7FB6D9" }}>
+          DUBAI · ABU DHABI · RAS AL KHAIMAH
         </p>
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02] max-w-5xl">
           {headline.map((w, i) => (
@@ -102,17 +108,20 @@ function Hero() {
 function About() {
   const ref = useReveal();
   return (
-    <section id="about" ref={ref} className="py-[52px] px-6" style={{ background: "#F2E4CC" }}>
+    <section id="about" ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-2xl mx-auto text-center">
         <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>ABOUT MEDI ESTATE</p>
         <h2 className="reveal mt-4 font-display text-4xl md:text-5xl leading-tight" style={{ color: "#1F2E38" }}>
           A coastal agency, working the UAE shoreline for fourteen years.
         </h2>
         <p className="reveal mt-5 text-base leading-relaxed" style={{ color: "#1F2E38" }}>
-          We started with a single office in Jumeirah and a short list of villas we'd personally inspected. That habit hasn't changed. Every property on our books has been walked, measured, and photographed by someone on our team before it reaches a client — which is why we still sell most homes to buyers we already know.
+          For over 14 years, we've helped people find exceptional homes along the UAE coast.
         </p>
         <p className="reveal mt-4 text-base leading-relaxed" style={{ color: "#1F2E38" }}>
-          The name Medi Estate is our promise: we work where the Mediterranean sensibility — sun, stone, water, shade — meets the pace of the Gulf.
+          We started with one office in Jumeirah and a small collection of carefully selected properties. Today, we still personally visit every home before listing it because we believe our clients deserve to know exactly what they're buying.
+        </p>
+        <p className="reveal mt-4 text-base leading-relaxed" style={{ color: "#1F2E38" }}>
+          At Medi Estate, we combine local expertise with a passion for beautiful coastal living.
         </p>
       </div>
     </section>
@@ -122,7 +131,7 @@ function About() {
 function Featured() {
   const ref = useReveal();
   return (
-    <section id="properties" ref={ref} className="py-[52px] px-6" style={{ background: "#E8D6AE" }}>
+    <section id="properties" ref={ref} className="py-10 px-6" style={{ background: "#E8D6AE" }}>
       <div className="max-w-7xl mx-auto">
         <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
           <div>
@@ -227,7 +236,7 @@ function Why() {
     { icon: <Anchor />, title: "Settled locally", body: "Our agents live in the neighbourhoods they sell. They pick up the phone." },
   ];
   return (
-    <section ref={ref} className="py-[52px] px-6" style={{ background: "#F2E4CC" }}>
+    <section ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10">
           <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>WHY MEDI ESTATE</p>
@@ -251,7 +260,7 @@ function Why() {
 
 function Stats() {
   return (
-    <section className="py-[52px] px-6" style={{ background: "#1B4B66", color: "#F2E4CC" }}>
+    <section className="py-10 px-6" style={{ background: "#1B4B66", color: "#F2E4CC" }}>
       <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {[
           { n: "1,240+", l: "HOMES SOLD" },
@@ -259,9 +268,9 @@ function Stats() {
           { n: "AED 6.8B", l: "TRANSACTED VALUE" },
           { n: "38", l: "AGENTS IN-HOUSE" },
         ].map((s, i) => (
-          <div key={i}>
-            <p className="font-display text-5xl md:text-6xl" style={{ color: "#F2E4CC" }}>{s.n}</p>
-            <p className="font-mono-eyebrow mt-2" style={{ color: "#7FB6D9" }}>{s.l}</p>
+          <div key={i} className="flex flex-col items-center">
+            <p className="font-display text-4xl md:text-5xl tabular-nums" style={{ color: "#F2E4CC", fontVariantNumeric: "tabular-nums", lineHeight: 1 }}>{s.n}</p>
+            <p className="font-mono-eyebrow mt-3" style={{ color: "#7FB6D9" }}>{s.l}</p>
           </div>
         ))}
       </div>
@@ -272,7 +281,7 @@ function Stats() {
 function Gallery() {
   const ref = useReveal();
   return (
-    <section id="gallery" ref={ref} className="py-[52px] px-6" style={{ background: "#E8D6AE" }}>
+    <section id="gallery" ref={ref} className="py-10 px-6" style={{ background: "#E8D6AE" }}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
           <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>GALLERY</p>
@@ -308,7 +317,7 @@ function Testimonials() {
     { quote: "Sold our Saadiyat villa above asking. They knew the buyer before they knew the property.", name: "Leila H.", place: "Seller, Saadiyat Island" },
   ];
   return (
-    <section id="testimonials" ref={ref} className="py-[52px] px-6" style={{ background: "#F2E4CC" }}>
+    <section id="testimonials" ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10">
           <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>TESTIMONIALS</p>
@@ -335,7 +344,7 @@ function Testimonials() {
 function Contact() {
   const ref = useReveal();
   return (
-    <section id="contact" ref={ref} className="py-[52px] px-6" style={{ background: "#E8D6AE" }}>
+    <section id="contact" ref={ref} className="py-10 px-6" style={{ background: "#E8D6AE" }}>
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
           <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>GET IN TOUCH</p>
@@ -355,32 +364,31 @@ function Contact() {
             </div>
           </form>
 
-          <div className="reveal p-6 border" style={{ borderColor: "rgba(27,75,102,0.2)", background: "#F2E4CC" }}>
+          <div className="reveal p-6 border flex flex-col" style={{ borderColor: "rgba(27,75,102,0.2)", background: "#F2E4CC" }}>
             <p className="font-mono-eyebrow mb-4" style={{ color: "#1B4B66" }}>OFFICE HOURS</p>
             <ul className="text-sm space-y-3" style={{ color: "#1F2E38" }}>
               <li className="flex justify-between border-b pb-2" style={{ borderColor: "rgba(31,46,56,0.15)" }}><span>Sunday — Thursday</span><span className="font-mono-eyebrow">9:00 – 19:00</span></li>
               <li className="flex justify-between border-b pb-2" style={{ borderColor: "rgba(31,46,56,0.15)" }}><span>Friday</span><span className="font-mono-eyebrow">14:00 – 19:00</span></li>
               <li className="flex justify-between border-b pb-2" style={{ borderColor: "rgba(31,46,56,0.15)" }}><span>Saturday</span><span className="font-mono-eyebrow">10:00 – 17:00</span></li>
-              <li className="pt-2 text-xs" style={{ color: "rgba(31,46,56,0.65)" }}>Private viewings available outside these hours by appointment.</li>
+              <li className="pt-1 text-xs" style={{ color: "rgba(31,46,56,0.65)" }}>Private viewings available outside these hours by appointment.</li>
             </ul>
-          </div>
-        </div>
 
-        {/* Row 2: Contact info */}
-        <div className="reveal mt-6 p-6 border" style={{ borderColor: "rgba(27,75,102,0.2)", background: "#F2E4CC" }}>
-          <p className="font-mono-eyebrow mb-4" style={{ color: "#1B4B66" }}>CONTACT INFORMATION</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm" style={{ color: "#1F2E38" }}>
-            <div>
-              <p className="font-mono-eyebrow text-[10px] mb-1" style={{ color: "#7A6B52" }}>PHONE</p>
-              <p>+971 4 555 8210</p>
-            </div>
-            <div>
-              <p className="font-mono-eyebrow text-[10px] mb-1" style={{ color: "#7A6B52" }}>EMAIL</p>
-              <p>hello@mediestate.ae</p>
-            </div>
-            <div>
-              <p className="font-mono-eyebrow text-[10px] mb-1" style={{ color: "#7A6B52" }}>OFFICE</p>
-              <p>Jumeirah Bay, Villa 14<br />Dubai, UAE</p>
+            <div className="mt-6 pt-6 border-t" style={{ borderColor: "rgba(31,46,56,0.15)" }}>
+              <p className="font-mono-eyebrow mb-4" style={{ color: "#1B4B66" }}>CONTACT</p>
+              <ul className="text-sm space-y-3" style={{ color: "#1F2E38" }}>
+                <li className="flex justify-between gap-3">
+                  <span className="font-mono-eyebrow text-[10px]" style={{ color: "#7A6B52" }}>PHONE</span>
+                  <span>+971 4 555 8210</span>
+                </li>
+                <li className="flex justify-between gap-3">
+                  <span className="font-mono-eyebrow text-[10px]" style={{ color: "#7A6B52" }}>EMAIL</span>
+                  <span>hello@mediestate.ae</span>
+                </li>
+                <li className="flex justify-between gap-3">
+                  <span className="font-mono-eyebrow text-[10px]" style={{ color: "#7A6B52" }}>OFFICE</span>
+                  <span className="text-right">Jumeirah Bay, Villa 14<br />Dubai, UAE</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
