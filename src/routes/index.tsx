@@ -115,10 +115,13 @@ function About() {
           A coastal agency, working the UAE shoreline for fourteen years.
         </h2>
         <p className="reveal mt-5 text-base leading-relaxed" style={{ color: "#1F2E38" }}>
-          We started with a single office in Jumeirah and a short list of villas we'd personally inspected. That habit hasn't changed. Every property on our books has been walked, measured, and photographed by someone on our team before it reaches a client — which is why we still sell most homes to buyers we already know.
+          For over 14 years, we've helped people find exceptional homes along the UAE coast.
         </p>
         <p className="reveal mt-4 text-base leading-relaxed" style={{ color: "#1F2E38" }}>
-          The name Medi Estate is our promise: we work where the Mediterranean sensibility — sun, stone, water, shade — meets the pace of the Gulf.
+          We started with one office in Jumeirah and a small collection of carefully selected properties. Today, we still personally visit every home before listing it because we believe our clients deserve to know exactly what they're buying.
+        </p>
+        <p className="reveal mt-4 text-base leading-relaxed" style={{ color: "#1F2E38" }}>
+          At Medi Estate, we combine local expertise with a passion for beautiful coastal living.
         </p>
       </div>
     </section>
