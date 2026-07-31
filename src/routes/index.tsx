@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import heroImg from "@/assets/hero.jpg";
 import heroVideo from "@/assets/hero-video.mp4.asset.json";
 import prop1 from "@/assets/prop1.jpg";
@@ -11,12 +11,7 @@ import gal2 from "@/assets/gal2.jpg";
 import gal3 from "@/assets/gal3.jpg";
 import gal4 from "@/assets/gal4.jpg";
 import gal5 from "@/assets/gal5.jpg";
-import agent1 from "@/assets/agent1.jpg";
-import agent2 from "@/assets/agent2.jpg";
-import agent3 from "@/assets/agent3.jpg";
-import agent4 from "@/assets/agent4.jpg";
 import { MediLogo } from "@/components/MediLogo";
-import { CompassRose, KeyIcon, Archway, WaveShield, OliveBranch, Anchor } from "@/components/CoastalIcons";
 import { SearchBar } from "@/components/SearchBar";
 import { PropertyCard } from "@/components/PropertyCard";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -25,10 +20,10 @@ export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "Medi Estate — Exceptional Homes on the UAE Coast" },
-      { name: "description", content: "Beachfront villas, marina penthouses and off-plan homes across Dubai, Abu Dhabi and Ras Al Khaimah. Search verified listings with a coastal specialist." },
-      { property: "og:title", content: "Medi Estate — Exceptional Homes on the UAE Coast" },
-      { property: "og:description", content: "Exceptional homes for exceptional lifestyles. Browse verified coastal listings across the UAE." },
+      { title: "Medi Estate — Homes with a sense of place" },
+      { name: "description", content: "A considered collection of coastal residences across Dubai, Abu Dhabi and Ras Al Khaimah. A boutique brokerage for the UAE shore." },
+      { property: "og:title", content: "Medi Estate — Homes with a sense of place" },
+      { property: "og:description", content: "Homes with a sense of place. A considered collection of coastal residences across the UAE." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:image", content: "https://id-preview--24f967db-11c1-43ac-bd5a-9bd64aeef82a.lovable.app/og-image.jpg" },
@@ -67,7 +62,6 @@ function Nav() {
       <nav className="hidden md:flex items-center gap-8" style={{ color: "#F2E4CC" }}>
         <a href="#properties" className="text-sm hover:opacity-70 transition-opacity">Properties</a>
         <a href="#categories" className="text-sm hover:opacity-70 transition-opacity">Categories</a>
-        <a href="#agents" className="text-sm hover:opacity-70 transition-opacity">Agents</a>
         <a href="#about" className="text-sm hover:opacity-70 transition-opacity">About</a>
         <a href="#contact" className="btn-pill btn-on-dark !py-2 !px-5 text-xs">Contact</a>
       </nav>
@@ -76,7 +70,7 @@ function Nav() {
 }
 
 function Hero() {
-  const headline = ["Exceptional", "homes", "for", "exceptional", "lifestyles."];
+  const headline = ["A", "different", "way", "to", "find", "home."];
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
       <video
@@ -91,10 +85,7 @@ function Hero() {
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(27,75,102,0.55) 0%, rgba(31,46,56,0.55) 60%, rgba(31,46,56,0.78) 100%)" }} />
       <Nav />
       <div className="relative z-20 min-h-screen flex flex-col items-center justify-center text-center px-6 pt-28 pb-16" style={{ color: "#F2E4CC" }}>
-        <p className="font-mono-eyebrow hero-fade" style={{ animationDelay: "1.8s", color: "#7FB6D9" }}>
-          EST. 2011
-        </p>
-        <p className="font-mono-eyebrow mt-2 mb-6 hero-fade" style={{ animationDelay: "1.9s", color: "#7FB6D9" }}>
+        <p className="font-mono-eyebrow mb-6 hero-fade" style={{ animationDelay: "1.8s", color: "#7FB6D9" }}>
           DUBAI · ABU DHABI · RAS AL KHAIMAH
         </p>
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02] max-w-5xl">
@@ -105,25 +96,15 @@ function Hero() {
           ))}
         </h1>
         <p className="font-display italic text-2xl md:text-3xl mt-6 hero-fade" style={{ animationDelay: "1.5s", color: "#F2E4CC" }}>
-          Discover properties designed around the way you live
+          Homes with a sense of place.
         </p>
         <p className="max-w-xl mt-6 text-base leading-relaxed hero-fade" style={{ animationDelay: "1.9s", color: "rgba(242,228,204,0.85)" }}>
-          Beachfront villas, Dubai skyline apartments and architect-built interiors along the Gulf. Every home walked, measured and verified by our team.
+          Carefully selected residences across the UAE's most remarkable coastlines.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3 hero-fade" style={{ animationDelay: "2.1s" }}>
-          <a href="#properties" className="btn-pill btn-on-dark">Explore Properties</a>
-          <a href="#contact" className="btn-pill" style={{ background: "#C1502E", color: "#F2E4CC" }}>Sell Your Property</a>
+          <a href="#properties" className="btn-pill btn-on-dark">Explore the collection</a>
+          <a href="#contact" className="btn-pill" style={{ background: "#C1502E", color: "#F2E4CC" }}>Sell your property</a>
         </div>
-      </div>
-    </section>
-  );
-}
-
-function Search() {
-  return (
-    <section className="px-6 -mt-16 relative z-20 pb-10">
-      <div className="max-w-5xl mx-auto">
-        <SearchBar />
       </div>
     </section>
   );
@@ -132,18 +113,21 @@ function Search() {
 function Categories() {
   const ref = useReveal();
   const cats = [
-    { name: "Luxury Villas", count: "212 homes", img: prop1 },
+    { name: "Villas", count: "212 homes", img: prop1 },
     { name: "Apartments", count: "486 homes", img: prop2 },
-    { name: "Commercial", count: "94 units", img: gal2 },
+    { name: "Beachfront", count: "94 homes", img: gal2 },
     { name: "Off-plan", count: "37 projects", img: prop3 },
-    { name: "Rentals", count: "158 homes", img: gal5 },
+    { name: "Private Listings", count: "By appointment", img: gal5 },
   ];
   return (
     <section id="categories" ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-7xl mx-auto">
+        <div className="reveal mb-8 max-w-3xl">
+          <SearchBar />
+        </div>
         <div className="mb-8">
           <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>BROWSE BY CATEGORY</p>
-          <h2 className="reveal mt-3 font-display text-4xl md:text-5xl" style={{ color: "#1F2E38" }}>What are you looking for?</h2>
+          <h2 className="reveal mt-3 font-display text-4xl md:text-5xl" style={{ color: "#1F2E38" }}>Find your place.</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {cats.map((c) => (
@@ -169,16 +153,13 @@ function About() {
       <div className="max-w-2xl mx-auto text-center">
         <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>ABOUT MEDI ESTATE</p>
         <h2 className="reveal mt-4 font-display text-4xl md:text-5xl leading-tight" style={{ color: "#1F2E38" }}>
-          A coastal agency, working the UAE shoreline for fourteen years.
+          A boutique brokerage for the UAE coast.
         </h2>
         <p className="reveal mt-5 text-base leading-relaxed" style={{ color: "#1F2E38" }}>
-          For over 14 years, we've helped people find exceptional homes along the UAE coast.
+          We're a small, specialist agency focused on the homes and coastlines we know best.
         </p>
         <p className="reveal mt-4 text-base leading-relaxed" style={{ color: "#1F2E38" }}>
-          We started with one office in Jumeirah and a small collection of carefully selected properties. Today, we still personally visit every home before listing it because we believe our clients deserve to know exactly what they're buying.
-        </p>
-        <p className="reveal mt-4 text-base leading-relaxed" style={{ color: "#1F2E38" }}>
-          At Medi Estate, we combine local expertise with a passion for beautiful coastal living.
+          Every property in our collection is chosen with care, and every client is looked after by one advisor — from the first viewing to the day they move in.
         </p>
       </div>
     </section>
@@ -194,10 +175,10 @@ function Featured() {
           <div>
             <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>FEATURED PROPERTIES</p>
             <h2 className="reveal mt-3 font-display text-4xl md:text-5xl" style={{ color: "#1F2E38" }}>
-              Currently on our books
+              A considered collection
             </h2>
           </div>
-          <Link to="/property/palm-villa" className="reveal btn-pill btn-outline">View a full listing</Link>
+          <Link to="/property/palm-villa" className="reveal btn-pill btn-outline">Explore the collection →</Link>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -211,10 +192,10 @@ function Featured() {
                 baths: 7,
                 sqft: "12,400",
                 image: prop1,
-                tag: "Featured",
+                tag: "MEDI SELECTED",
                 tall: true,
                 href: true,
-                blurb: "Beachfront on the west crescent. Private pool, 12m frontage, staff quarters and direct sand access.",
+                blurb: "A private beachfront residence on the western crescent, with direct access to the sand and uninterrupted views across the Gulf.",
               }}
             />
           </div>
@@ -236,35 +217,25 @@ function Featured() {
 function Why() {
   const ref = useReveal();
   const items = [
-    { icon: <CompassRose />, title: "Local market expertise", body: "Fourteen years of walking beachfront plots from Jumeirah to Al Hamra." },
-    { icon: <KeyIcon />, title: "Direct owner access", body: "Roughly 60% of our listings never reach a public portal." },
-    { icon: <Archway />, title: "Verified properties", body: "Every listing is measured, floor-planned, and photographed by our team." },
-    { icon: <WaveShield />, title: "Transparent transactions", body: "Independent title, structural, and salinity checks before you sign." },
-    { icon: <OliveBranch />, title: "Personalized service", body: "We handle handover, snagging, and rental setup after purchase if you want us to." },
-    { icon: <Anchor />, title: "Settled locally", body: "Our agents live in the neighbourhoods they sell. They pick up the phone." },
+    { num: "01", title: "Local knowledge", body: "We know the streets, coastlines and communities we represent." },
+    { num: "02", title: "Carefully selected", body: "Every property is considered before it becomes part of our collection." },
+    { num: "03", title: "A personal approach", body: "One advisor from the first viewing to the final signature." },
+    { num: "04", title: "Beyond the sale", body: "From handover to settling in, we're here after the keys change hands." },
   ];
-  const trust = ["Verified properties", "Local market expertise", "Personalized service", "Transparent transactions"];
   return (
     <section ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <div className="text-center mb-8">
-          <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>WHY MEDI ESTATE?</p>
+          <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>WHY MEDI ESTATE</p>
           <h2 className="reveal mt-3 font-display text-4xl md:text-5xl" style={{ color: "#1F2E38" }}>
-            Six things we do differently
+            The way we work
           </h2>
-          <ul className="reveal mt-6 flex flex-wrap justify-center gap-x-8 gap-y-2">
-            {trust.map((t) => (
-              <li key={t} className="flex items-center gap-2 text-sm" style={{ color: "#1F2E38" }}>
-                <span style={{ color: "#C1502E" }}>✓</span> {t}
-              </li>
-            ))}
-          </ul>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {items.map((it, i) => (
-            <div key={i} className="reveal p-6 border" style={{ borderColor: "rgba(27,75,102,0.18)", background: "rgba(242,228,204,0.4)" }}>
-              <div className="mb-4">{it.icon}</div>
-              <h3 className="font-display text-2xl" style={{ color: "#1F2E38" }}>{it.title}</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {items.map((it) => (
+            <div key={it.num} className="reveal p-6 border" style={{ borderColor: "rgba(27,75,102,0.18)", background: "rgba(242,228,204,0.4)" }}>
+              <p className="font-mono-eyebrow text-[11px]" style={{ color: "#C1502E" }}>{it.num}</p>
+              <h3 className="font-display text-2xl mt-3" style={{ color: "#1F2E38" }}>{it.title}</h3>
               <p className="mt-2 text-sm leading-relaxed" style={{ color: "rgba(31,46,56,0.78)" }}>{it.body}</p>
             </div>
           ))}
@@ -274,85 +245,31 @@ function Why() {
   );
 }
 
-function Stats() {
-  return (
-    <section className="py-10 px-6" style={{ background: "#1B4B66", color: "#F2E4CC" }}>
-      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        {[
-          { n: "1,240+", l: "HOMES SOLD" },
-          { n: "14", l: "YEARS ON THE COAST" },
-          { n: "AED 6.8B", l: "TRANSACTED VALUE" },
-          { n: "38", l: "AGENTS IN-HOUSE" },
-        ].map((s, i) => (
-          <div key={i} className="flex flex-col items-center">
-            <p className="font-display text-4xl md:text-5xl tabular-nums" style={{ color: "#F2E4CC", fontVariantNumeric: "tabular-nums", lineHeight: 1 }}>{s.n}</p>
-            <p className="font-mono-eyebrow mt-3" style={{ color: "#7FB6D9" }}>{s.l}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Agents() {
-  const ref = useReveal();
-  const agents = [
-    { img: agent1, name: "Layla Nasser", spec: "Beachfront villas · Palm Jumeirah", listings: "38 active listings" },
-    { img: agent2, name: "Marc Delacroix", spec: "Penthouses · Dubai Marina", listings: "24 active listings" },
-    { img: agent3, name: "Elena Vidal", spec: "Off-plan & investment", listings: "41 active listings" },
-    { img: agent4, name: "Rohan Mehta", spec: "Commercial & rentals", listings: "29 active listings" },
-  ];
-  return (
-    <section id="agents" ref={ref} className="py-10 px-6" style={{ background: "#E8D6AE" }}>
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8">
-          <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>OUR TEAM</p>
-          <h2 className="reveal mt-3 font-display text-4xl md:text-5xl" style={{ color: "#1F2E38" }}>Meet our experts</h2>
-        </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {agents.map((a) => (
-            <article key={a.name} className="reveal group">
-              <div className="overflow-hidden">
-                <img src={a.img} alt={a.name} className="gallery-img w-full h-[340px] object-cover" width={800} height={1000} loading="lazy" />
-              </div>
-              <div className="p-4 border border-t-0" style={{ borderColor: "rgba(27,75,102,0.16)", background: "rgba(242,228,204,0.55)" }}>
-                <h3 className="font-display text-2xl" style={{ color: "#1F2E38" }}>{a.name}</h3>
-                <p className="text-sm mt-1" style={{ color: "rgba(31,46,56,0.75)" }}>{a.spec}</p>
-                <p className="font-mono-eyebrow text-[10px] mt-3" style={{ color: "#1B4B66" }}>{a.listings}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Gallery() {
   const ref = useReveal();
+  const shots = [
+    { img: gal1, label: "Architecture", alt: "Archway to pool", cls: "md:row-span-2" },
+    { img: gal2, label: "Interior detail", alt: "Terrace at night", cls: "md:col-span-2" },
+    { img: gal3, label: "Material / texture", alt: "Bathroom with sea view", cls: "md:row-span-2" },
+    { img: gal4, label: "Coastline", alt: "Palm trees", cls: "" },
+    { img: gal5, label: "Pool", alt: "Infinity pool at dawn", cls: "" },
+  ];
   return (
     <section id="gallery" ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
-          <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>GALLERY</p>
-          <h2 className="reveal mt-3 font-display text-4xl md:text-5xl" style={{ color: "#1F2E38" }}>Inside our listings</h2>
+          <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>THE MEDI JOURNAL</p>
+          <h2 className="reveal mt-3 font-display text-4xl md:text-5xl" style={{ color: "#1F2E38" }}>Places worth looking twice at.</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <div className="reveal overflow-hidden md:row-span-2">
-            <img src={gal1} alt="Archway to pool" className="gallery-img w-full h-full object-cover" width={800} height={1000} loading="lazy" />
-          </div>
-          <div className="reveal overflow-hidden md:col-span-2">
-            <img src={gal2} alt="Terrace at night" className="gallery-img w-full h-full object-cover" width={1000} height={700} loading="lazy" />
-          </div>
-          <div className="reveal overflow-hidden md:row-span-2">
-            <img src={gal3} alt="Bathroom with sea view" className="gallery-img w-full h-full object-cover" width={700} height={900} loading="lazy" />
-          </div>
-          <div className="reveal overflow-hidden">
-            <img src={gal4} alt="Palm trees" className="gallery-img w-full h-full object-cover" width={900} height={700} loading="lazy" />
-          </div>
-          <div className="reveal overflow-hidden">
-            <img src={gal5} alt="Infinity pool at dawn" className="gallery-img w-full h-full object-cover" width={1100} height={800} loading="lazy" />
-          </div>
+          {shots.map((s) => (
+            <figure key={s.label} className={`reveal overflow-hidden relative ${s.cls}`}>
+              <img src={s.img} alt={s.alt} className="gallery-img w-full h-full object-cover" width={1000} height={900} loading="lazy" />
+              <figcaption className="absolute bottom-3 left-3 font-mono-eyebrow text-[10px] px-2.5 py-1" style={{ color: "#F2E4CC", background: "rgba(31,46,56,0.6)", borderRadius: 999 }}>
+                {s.label}
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </div>
     </section>
@@ -391,25 +308,71 @@ function Testimonials() {
   );
 }
 
+function Choice({ options, value, onChange }: { options: string[]; value: string; onChange: (v: string) => void }) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {options.map((o) => {
+        const active = o === value;
+        return (
+          <button
+            type="button"
+            key={o}
+            onClick={() => onChange(o)}
+            className="px-4 py-2 text-xs tracking-wide transition-colors"
+            style={{
+              borderRadius: 999,
+              background: active ? "#1B4B66" : "transparent",
+              color: active ? "#F2E4CC" : "#1F2E38",
+              border: active ? "1px solid #1B4B66" : "1px solid rgba(31,46,56,0.25)",
+            }}
+          >
+            {o}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 function Contact() {
   const ref = useReveal();
+  const [intent, setIntent] = useState("Buy");
+  const [where, setWhere] = useState("Dubai");
+  const [budget, setBudget] = useState("AED 5M – 10M");
   return (
     <section id="contact" ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
           <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>GET IN TOUCH</p>
-          <h2 className="reveal mt-3 font-display text-4xl md:text-5xl" style={{ color: "#1F2E38" }}>Talk to an agent</h2>
+          <h2 className="reveal mt-3 font-display text-4xl md:text-5xl" style={{ color: "#1F2E38" }}>Let's find your place.</h2>
+          <p className="reveal mt-4 text-base" style={{ color: "rgba(31,46,56,0.75)" }}>Tell us what you're looking for and we'll take it from there.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           <form className="reveal p-6 border" style={{ borderColor: "rgba(27,75,102,0.2)", background: "#F2E4CC" }} onSubmit={(e) => e.preventDefault()}>
-            <p className="font-mono-eyebrow mb-4" style={{ color: "#1B4B66" }}>INQUIRY</p>
-            <div className="space-y-3">
-              <input type="text" placeholder="Your name" className="w-full bg-transparent border-b py-2 text-sm outline-none" style={{ borderColor: "rgba(31,46,56,0.3)", color: "#1F2E38" }} />
-              <input type="email" placeholder="Email" className="w-full bg-transparent border-b py-2 text-sm outline-none" style={{ borderColor: "rgba(31,46,56,0.3)", color: "#1F2E38" }} />
-              <input type="text" placeholder="Property or area of interest" className="w-full bg-transparent border-b py-2 text-sm outline-none" style={{ borderColor: "rgba(31,46,56,0.3)", color: "#1F2E38" }} />
-              <textarea placeholder="Message" rows={3} className="w-full bg-transparent border-b py-2 text-sm outline-none resize-none" style={{ borderColor: "rgba(31,46,56,0.3)", color: "#1F2E38" }} />
-              <button type="submit" className="btn-pill btn-primary w-full mt-2">Send inquiry</button>
+            <div className="space-y-5">
+              <div>
+                <p className="font-mono-eyebrow text-[10px] mb-2" style={{ color: "#7A6B52" }}>I'M LOOKING TO</p>
+                <Choice options={["Buy", "Sell", "Rent", "Invest"]} value={intent} onChange={setIntent} />
+              </div>
+              <div>
+                <p className="font-mono-eyebrow text-[10px] mb-2" style={{ color: "#7A6B52" }}>WHERE</p>
+                <Choice options={["Dubai", "Abu Dhabi", "Ras Al Khaimah"]} value={where} onChange={setWhere} />
+              </div>
+              <div>
+                <p className="font-mono-eyebrow text-[10px] mb-2" style={{ color: "#7A6B52" }}>BUDGET</p>
+                <Choice options={["Under AED 5M", "AED 5M – 10M", "AED 10M – 25M", "Above AED 25M"]} value={budget} onChange={setBudget} />
+              </div>
+
+              <div className="pt-2 border-t" style={{ borderColor: "rgba(31,46,56,0.15)" }}>
+                <p className="font-mono-eyebrow text-[10px] mb-3 mt-3" style={{ color: "#7A6B52" }}>YOUR DETAILS</p>
+                <div className="space-y-3">
+                  <input type="text" placeholder="Your name" className="w-full bg-transparent border-b py-2 text-sm outline-none" style={{ borderColor: "rgba(31,46,56,0.3)", color: "#1F2E38" }} />
+                  <input type="email" placeholder="Email" className="w-full bg-transparent border-b py-2 text-sm outline-none" style={{ borderColor: "rgba(31,46,56,0.3)", color: "#1F2E38" }} />
+                  <textarea placeholder="A little about what you're after" rows={3} className="w-full bg-transparent border-b py-2 text-sm outline-none resize-none" style={{ borderColor: "rgba(31,46,56,0.3)", color: "#1F2E38" }} />
+                  <button type="submit" className="btn-pill btn-primary w-full mt-2">Send enquiry</button>
+                </div>
+              </div>
             </div>
           </form>
 
@@ -460,13 +423,10 @@ function Home() {
   return (
     <main>
       <Hero />
-      <Search />
       <Categories />
       <About />
       <Featured />
       <Why />
-      <Stats />
-      <Agents />
       <Gallery />
       <Testimonials />
       <Contact />
