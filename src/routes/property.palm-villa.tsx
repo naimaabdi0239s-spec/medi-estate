@@ -6,7 +6,7 @@ import gal3 from "@/assets/gal3.jpg";
 import gal5 from "@/assets/gal5.jpg";
 import agent1 from "@/assets/agent1.jpg";
 import { MediLogo } from "@/components/MediLogo";
-import { SiteFooter } from "@/routes/index";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const Route = createFileRoute("/property/palm-villa")({
   component: PalmVilla,
