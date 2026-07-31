@@ -4,7 +4,6 @@ import gal1 from "@/assets/gal1.jpg";
 import gal2 from "@/assets/gal2.jpg";
 import gal3 from "@/assets/gal3.jpg";
 import gal5 from "@/assets/gal5.jpg";
-import agent1 from "@/assets/agent1.jpg";
 import { MediLogo } from "@/components/MediLogo";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -116,7 +115,7 @@ function PalmVilla() {
           <aside className="lg:sticky lg:top-8 self-start p-6 border" style={{ borderColor: "rgba(27,75,102,0.2)", background: "rgba(232,214,174,0.5)" }}>
             <p className="font-mono-eyebrow mb-4" style={{ color: "#1B4B66" }}>SCHEDULE A VIEWING</p>
             <div className="flex items-center gap-3 pb-5 mb-5 border-b" style={{ borderColor: "rgba(31,46,56,0.15)" }}>
-              <img src={agent1} alt="Layla Hassan" className="h-14 w-14 object-cover" style={{ borderRadius: 999 }} width={800} height={1000} loading="lazy" />
+             
               <div>
                 <p className="font-display text-xl" style={{ color: "#1F2E38" }}>Layla Hassan</p>
                 <p className="text-xs" style={{ color: "rgba(31,46,56,0.7)" }}>Palm Jumeirah · Waterfront Residences</p>
