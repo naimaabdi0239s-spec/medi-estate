@@ -15,15 +15,6 @@ export type Property = {
   blurb?: string;
 };
 
-function Spec({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex flex-col">
-      <span className="font-display text-lg leading-none" style={{ color: "#1F2E38" }}>{value}</span>
-      <span className="font-mono-eyebrow text-[9px] mt-1" style={{ color: "#7A6B52" }}>{label}</span>
-    </div>
-  );
-}
-
 export function PropertyCard({ p }: { p: Property }) {
   const [saved, setSaved] = useState(false);
 
@@ -41,8 +32,8 @@ export function PropertyCard({ p }: { p: Property }) {
         />
         {p.tag && (
           <span
-            className="absolute top-4 left-4 px-3 py-1 text-[10px] tracking-widest uppercase font-mono-eyebrow"
-            style={{ background: "#C1502E", color: "#F2E4CC", borderRadius: 999 }}
+            className="absolute top-4 left-4 px-2.5 py-1 text-[9px] uppercase font-mono-eyebrow"
+            style={{ background: "rgba(31,46,56,0.78)", color: "#F2E4CC", borderRadius: 999, letterSpacing: "0.14em" }}
           >
             {p.tag}
           </span>
@@ -70,13 +61,11 @@ export function PropertyCard({ p }: { p: Property }) {
         </div>
         <p className="font-mono-eyebrow mt-2" style={{ color: "#7A6B52" }}>{p.location}</p>
         {p.blurb && (
-          <p className="text-sm mt-3 max-w-lg" style={{ color: "rgba(31,46,56,0.75)" }}>{p.blurb}</p>
+          <p className="text-sm mt-3 max-w-lg leading-relaxed" style={{ color: "rgba(31,46,56,0.75)" }}>{p.blurb}</p>
         )}
-        <div className="mt-4 pt-4 border-t grid grid-cols-3 gap-3" style={{ borderColor: "rgba(31,46,56,0.15)" }}>
-          <Spec label="BEDS" value={String(p.beds)} />
-          <Spec label="BATHS" value={String(p.baths)} />
-          <Spec label="SQ FT" value={p.sqft} />
-        </div>
+        <p className="font-mono-eyebrow text-[10px] mt-4 pt-4 border-t" style={{ color: "#7A6B52", borderColor: "rgba(31,46,56,0.15)" }}>
+          {p.beds} BED · {p.baths} BATH · {p.sqft} SQ FT
+        </p>
       </div>
     </>
   );
