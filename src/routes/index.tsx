@@ -74,7 +74,7 @@ function Hero() {
     <section className="relative min-h-screen w-full overflow-hidden">
       <video
         src={heroVideo.url}
-        poster={heroImg}
+       
         autoPlay
         loop
         muted
