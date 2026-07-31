@@ -22,7 +22,7 @@ export function SearchBar() {
         <label className="block">
           <span className="font-mono-eyebrow text-[10px]" style={{ color: "#7A6B52" }}>PROPERTY TYPE</span>
           <select className={field} style={{ borderColor: "rgba(31,46,56,0.3)", color: "#1F2E38" }} defaultValue="Villa">
-            {["Villa", "Apartment", "Penthouse", "Townhouse", "Commercial"].map((o) => (
+            {["Villa", "Apartment", "Beachfront", "Off-plan", "Private Listing"].map((o) => (
               <option key={o}>{o}</option>
             ))}
           </select>
