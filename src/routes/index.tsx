@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import heroVideo from "@/assets/hero-video.mp4.asset.json";
+import heroVideo from "@/assets/hero-video.mp4";
 import prop1 from "@/assets/prop1.jpg";
 import prop2 from "@/assets/prop2.jpg";
 import prop3 from "@/assets/prop3.jpg";
@@ -73,8 +73,7 @@ function Hero() {
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
       <video
-        src={heroVideo.url}
-       
+        src={heroVideo}
         autoPlay
         loop
         muted
