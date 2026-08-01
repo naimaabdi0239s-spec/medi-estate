@@ -20,16 +20,16 @@ export function PropertyCard({ p }: { p: Property }) {
 
   const body = (
     <>
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden flex-1" style={{ minHeight: p.tall ? 380 : 260 }}>
         <img
           src={p.image}
           alt={p.title}
-          className="gallery-img w-full object-cover"
-          style={{ height: p.tall ? 520 : 280 }}
+          className="gallery-img absolute inset-0 h-full w-full object-cover"
           width={1200}
           height={900}
           loading="lazy"
         />
+
         {p.tag && (
           <span
             className="absolute top-4 left-4 px-2.5 py-1 text-[9px] uppercase font-mono-eyebrow"
@@ -72,10 +72,11 @@ export function PropertyCard({ p }: { p: Property }) {
 
   if (p.href) {
     return (
-      <Link to="/property/palm-villa" className="reveal block group">
+      <Link to="/property/palm-villa" className="reveal flex h-full flex-col group">
         {body}
       </Link>
     );
   }
-  return <article className="reveal group">{body}</article>;
+  return <article className="reveal flex h-full flex-col group">{body}</article>;
 }
+
