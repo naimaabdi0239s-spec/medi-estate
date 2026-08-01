@@ -9,7 +9,7 @@ export function MediLogo({ onDark = false, size = "md" }: Props) {
   return (
     <div className="flex items-end gap-2 leading-none">
       <span className={`font-script ${scriptSize}`} style={{ color: ink, lineHeight: 0.9 }}>
-        Medi Estate
+        Med Estate
       </span>
       {/* Two palm trees silhouette */}
       <svg

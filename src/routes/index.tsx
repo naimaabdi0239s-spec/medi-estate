@@ -19,10 +19,10 @@ export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "Medi Estate — Homes with a sense of place" },
+      { title: "Med Estate — Your Trusted Gateway to UAE Real Estate" },
       { name: "description", content: "A considered collection of coastal residences across Dubai, Abu Dhabi and Ras Al Khaimah. A boutique brokerage for the UAE shore." },
-      { property: "og:title", content: "Medi Estate — Homes with a sense of place" },
-      { property: "og:description", content: "Homes with a sense of place. A considered collection of coastal residences across the UAE." },
+      { property: "og:title", content: "Med Estate — Your Trusted Gateway to UAE Real Estate" },
+      { property: "og:description", content: "Transparent transactions, verified listings, and expert guidance from click to key. A considered collection of coastal residences across the UAE." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:image", content: "https://id-preview--24f967db-11c1-43ac-bd5a-9bd64aeef82a.lovable.app/og-image.jpg" },
@@ -69,7 +69,7 @@ function Nav() {
 }
 
 function Hero() {
-  const headline = ["A", "different", "way", "to", "find", "home."];
+  const headline = ["Your", "Trusted", "Gateway", "to", "UAE", "Real", "Estate."];
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
       <video
@@ -94,7 +94,7 @@ function Hero() {
           ))}
         </h1>
         <p className="font-display italic text-2xl md:text-3xl mt-6 hero-fade" style={{ animationDelay: "1.5s", color: "#F2E4CC" }}>
-          Homes with a sense of place.
+          Transparent transactions, verified listings, and expert guidance from click to key.
         </p>
         <p className="max-w-xl mt-6 text-base leading-relaxed hero-fade" style={{ animationDelay: "1.9s", color: "rgba(242,228,204,0.85)" }}>
           Carefully selected residences across the UAE's most remarkable coastlines.
@@ -149,7 +149,7 @@ function About() {
   return (
     <section id="about" ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-2xl mx-auto text-center">
-        <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>ABOUT MEDI ESTATE</p>
+        <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>ABOUT MED ESTATE</p>
         <h2 className="reveal mt-4 font-display text-4xl md:text-5xl leading-tight" style={{ color: "#1F2E38" }}>
           A boutique brokerage for the UAE coast.
         </h2>
@@ -224,7 +224,7 @@ function Why() {
     <section ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-8">
-          <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>WHY MEDI ESTATE</p>
+          <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>WHY MED ESTATE</p>
           <h2 className="reveal mt-3 font-display text-4xl md:text-5xl" style={{ color: "#1F2E38" }}>
             The way we work
           </h2>
@@ -256,7 +256,7 @@ function Gallery() {
     <section id="gallery" ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
-          <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>THE MEDI JOURNAL</p>
+          <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>THE MED JOURNAL</p>
           <h2 className="reveal mt-3 font-display text-4xl md:text-5xl" style={{ color: "#1F2E38" }}>Places worth looking twice at.</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -278,7 +278,7 @@ function Testimonials() {
   const ref = useReveal();
   const items = [
     { quote: "They found us a house that wasn't listed anywhere. Two viewings, offer accepted in a week.", name: "Sara & Omar K.", place: "Buyers, Palm Jumeirah" },
-    { quote: "Handover took four months and Medi handled every meeting with the developer. I signed things; that was it.", name: "James R.", place: "Buyer, Dubai Marina" },
+    { quote: "Handover took four months and Med handled every meeting with the developer. I signed things; that was it.", name: "James R.", place: "Buyer, Dubai Marina" },
     { quote: "Sold our Saadiyat villa above asking. They knew the buyer before they knew the property.", name: "Leila H.", place: "Seller, Saadiyat Island" },
   ];
   return (
@@ -405,7 +405,7 @@ function Contact() {
 
         <div className="reveal mt-6 overflow-hidden border" style={{ borderColor: "rgba(27,75,102,0.2)" }}>
           <iframe
-            title="Medi Estate office map"
+            title="Med Estate office map"
             src="https://www.openstreetmap.org/export/embed.html?bbox=55.22%2C25.19%2C55.27%2C25.22&layer=mapnik&marker=25.205%2C55.245"
             className="w-full h-[320px]"
             style={{ filter: "sepia(0.15) hue-rotate(-10deg) saturate(0.85)", border: 0 }}
