@@ -11,9 +11,9 @@ export const Route = createFileRoute("/property/palm-villa")({
   component: PalmVilla,
   head: () => ({
     meta: [
-      { title: "Villa Azzurra, Palm Jumeirah — Medi Estate" },
+      { title: "Villa Azzurra, Palm Jumeirah — Med Estate" },
       { name: "description", content: "Six-bedroom beachfront villa on the west crescent of Palm Jumeirah. Private pool, sea view, smart home. AED 42.5M — schedule a viewing." },
-      { property: "og:title", content: "Villa Azzurra, Palm Jumeirah — Medi Estate" },
+      { property: "og:title", content: "Villa Azzurra, Palm Jumeirah — Med Estate" },
       { property: "og:description", content: "Six-bedroom beachfront villa with private pool, sea views and smart home systems on Palm Jumeirah." },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -30,7 +30,7 @@ export function SiteFooter() {
         </div>
         <div className="flex flex-col md:flex-row justify-between items-center gap-3 pt-6 text-xs" style={{ color: "rgba(242,228,204,0.65)" }}>
           <p>Dubai · UAE</p>
-          <p>© {new Date().getFullYear()} Medi Estate.</p>
+          <p>© {new Date().getFullYear()} Med Estate.</p>
         </div>
       </div>
     </footer>
