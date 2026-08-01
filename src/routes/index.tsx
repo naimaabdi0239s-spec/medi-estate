@@ -69,7 +69,7 @@ function Nav() {
 }
 
 function Hero() {
-  const headline = ["A", "different", "way", "to", "find", "home."];
+  const headline = ["Your", "Trusted", "Gateway", "to", "UAE", "Real", "Estate."];
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
       <video
