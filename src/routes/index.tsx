@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import heroVideo from "@/assets/hero-video.mp4.asset.json";
 import prop1 from "@/assets/prop1.jpg";
 import prop2 from "@/assets/prop2.jpg";
 import prop3 from "@/assets/prop3.jpg";
@@ -71,13 +72,14 @@ function Hero() {
   const headline = ["A", "different", "way", "to", "find", "home."];
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
-      <iframe
-  src="https://assets.pinterest.com/ext/embed.html?id=291045194681105656"
-  className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-  frameBorder="0"
-  scrolling="no"
-  title="Medi Estate hero video"
-/>
+      <video
+        src={heroVideo.url}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+      />
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(27,75,102,0.55) 0%, rgba(31,46,56,0.55) 60%, rgba(31,46,56,0.78) 100%)" }} />
       <Nav />
       <div className="relative z-20 min-h-screen flex flex-col items-center justify-center text-center px-6 pt-28 pb-16" style={{ color: "#F2E4CC" }}>
