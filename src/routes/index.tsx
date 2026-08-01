@@ -94,7 +94,7 @@ function Hero() {
           ))}
         </h1>
         <p className="font-display italic text-2xl md:text-3xl mt-6 hero-fade" style={{ animationDelay: "1.5s", color: "#F2E4CC" }}>
-          Homes with a sense of place.
+          Transparent transactions, verified listings, and expert guidance from click to key.
         </p>
         <p className="max-w-xl mt-6 text-base leading-relaxed hero-fade" style={{ animationDelay: "1.9s", color: "rgba(242,228,204,0.85)" }}>
           Carefully selected residences across the UAE's most remarkable coastlines.
