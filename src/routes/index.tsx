@@ -19,10 +19,10 @@ export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "Med Estate — Homes with a sense of place" },
+      { title: "Med Estate — Your Trusted Gateway to UAE Real Estate" },
       { name: "description", content: "A considered collection of coastal residences across Dubai, Abu Dhabi and Ras Al Khaimah. A boutique brokerage for the UAE shore." },
-      { property: "og:title", content: "Med Estate — Homes with a sense of place" },
-      { property: "og:description", content: "Homes with a sense of place. A considered collection of coastal residences across the UAE." },
+      { property: "og:title", content: "Med Estate — Your Trusted Gateway to UAE Real Estate" },
+      { property: "og:description", content: "Transparent transactions, verified listings, and expert guidance from click to key. A considered collection of coastal residences across the UAE." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:image", content: "https://id-preview--24f967db-11c1-43ac-bd5a-9bd64aeef82a.lovable.app/og-image.jpg" },

@@ -8,7 +8,7 @@ export function SiteFooter() {
           <div>
             <MediLogo onDark size="md" />
             <p className="mt-4 text-sm max-w-xs" style={{ color: "rgba(242,228,204,0.8)" }}>
-              Homes with a sense of place.
+              Transparent transactions, verified listings, and expert guidance from click to key.
             </p>
           </div>
           <div>
