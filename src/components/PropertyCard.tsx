@@ -20,7 +20,7 @@ export function PropertyCard({ p }: { p: Property }) {
 
   const body = (
     <>
-      <div className="relative overflow-hidden flex-1" style={{ minHeight: p.tall ? 380 : 260 }}>
+      <div className="relative overflow-hidden flex-1" style={{ minHeight: p.tall ? 280 : 135 }}>
         <img
           src={p.image}
           alt={p.title}
@@ -54,16 +54,16 @@ export function PropertyCard({ p }: { p: Property }) {
         </button>
       </div>
 
-      <div className="p-5 border border-t-0" style={{ borderColor: "rgba(27,75,102,0.16)", background: "rgba(242,228,204,0.55)" }}>
-        <div className="flex items-baseline justify-between gap-4">
-          <h3 className="font-display text-2xl" style={{ color: "#1F2E38" }}>{p.title}</h3>
-          <p className="font-display text-xl whitespace-nowrap" style={{ color: "#1B4B66" }}>{p.price}</p>
+      <div className={`${p.tall ? "p-4 md:p-5" : "p-3 md:p-4"} flex flex-1 flex-col border border-t-0`} style={{ borderColor: "rgba(27,75,102,0.16)", background: "rgba(242,228,204,0.55)" }}>
+        <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+          <h3 className={`font-display ${p.tall ? "text-2xl" : "text-xl"}`} style={{ color: "#1F2E38" }}>{p.title}</h3>
+          <p className={`font-display ${p.tall ? "text-xl" : "text-lg"} whitespace-nowrap`} style={{ color: "#1B4B66" }}>{p.price}</p>
         </div>
-        <p className="font-mono-eyebrow mt-2" style={{ color: "#7A6B52" }}>{p.location}</p>
+        <p className="font-mono-eyebrow mt-1.5" style={{ color: "#7A6B52" }}>{p.location}</p>
         {p.blurb && (
-          <p className="text-sm mt-3 max-w-lg leading-relaxed" style={{ color: "rgba(31,46,56,0.75)" }}>{p.blurb}</p>
+          <p className={`mt-2 max-w-lg leading-relaxed ${p.tall ? "text-sm" : "text-xs"}`} style={{ color: "rgba(31,46,56,0.75)" }}>{p.blurb}</p>
         )}
-        <p className="font-mono-eyebrow text-[10px] mt-4 pt-4 border-t" style={{ color: "#7A6B52", borderColor: "rgba(31,46,56,0.15)" }}>
+        <p className={`font-mono-eyebrow ${p.tall ? "text-[10px] pt-4 mt-auto" : "text-[9px] pt-3 mt-3"} border-t`} style={{ color: "#7A6B52", borderColor: "rgba(31,46,56,0.15)" }}>
           {p.beds} BED · {p.baths} BATH · {p.sqft} SQ FT
         </p>
       </div>

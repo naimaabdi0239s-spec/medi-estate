@@ -2,7 +2,7 @@ import { MediLogo } from "@/components/MediLogo";
 
 export function SiteFooter() {
   return (
-    <footer className="px-6 py-5" style={{ background: "#1B4B66", color: "#F2E4CC" }}>
+    <footer className="site-footer relative px-6 pb-5 pt-6" style={{ background: "#1B4B66", color: "#F2E4CC" }}>
       <div className="max-w-6xl mx-auto grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 sm:flex sm:flex-wrap sm:justify-between">
         <div className="flex min-w-0 items-center gap-4">
           <MediLogo onDark size="sm" />

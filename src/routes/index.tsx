@@ -78,6 +78,8 @@ function Hero() {
         loop
         muted
         playsInline
+        aria-hidden="true"
+        disablePictureInPicture
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(27,75,102,0.55) 0%, rgba(31,46,56,0.55) 60%, rgba(31,46,56,0.78) 100%)" }} />
@@ -118,20 +120,20 @@ function Categories() {
     { name: "Private Listings", count: "By appointment", img: gal5 },
   ];
   return (
-    <section id="categories" ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
+    <section id="categories" ref={ref} className="py-8 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-7xl mx-auto">
         <div className="reveal mb-8 max-w-3xl mx-auto">
           <SearchBar />
         </div>
 
-        <div className="mb-8">
+        <div className="mb-6">
           <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>BROWSE BY CATEGORY</p>
           <h2 className="reveal mt-3 font-display text-4xl md:text-5xl" style={{ color: "#1F2E38" }}>Find your place.</h2>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
           {cats.map((c) => (
             <a key={c.name} href="#properties" className="reveal group block relative overflow-hidden">
-              <img src={c.img} alt={c.name} className="gallery-img w-full h-[220px] object-cover" width={600} height={800} loading="lazy" />
+              <img src={c.img} alt={c.name} className="gallery-img w-full h-[170px] sm:h-[185px] object-cover" width={600} height={800} loading="lazy" />
               <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(27,75,102,0) 40%, rgba(31,46,56,0.8) 100%)" }} />
               <div className="absolute bottom-4 left-4 right-4" style={{ color: "#F2E4CC" }}>
                 <h3 className="font-display text-xl leading-tight">{c.name}</h3>
@@ -148,7 +150,7 @@ function Categories() {
 function About() {
   const ref = useReveal();
   return (
-    <section id="about" ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
+    <section id="about" ref={ref} className="py-8 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-2xl mx-auto text-center">
         <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>ABOUT MED ESTATE</p>
         <h2 className="reveal mt-4 font-display text-4xl md:text-5xl leading-tight" style={{ color: "#1F2E38" }}>
@@ -168,9 +170,9 @@ function About() {
 function Featured() {
   const ref = useReveal();
   return (
-    <section id="properties" ref={ref} className="py-10 px-6" style={{ background: "#E8D6AE" }}>
+    <section id="properties" ref={ref} className="py-8 px-6" style={{ background: "#E8D6AE" }}>
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
+        <div className="flex items-end justify-between mb-6 flex-wrap gap-4">
           <div>
             <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>FEATURED PROPERTIES</p>
             <h2 className="reveal mt-3 font-display text-4xl md:text-5xl" style={{ color: "#1F2E38" }}>
@@ -180,7 +182,7 @@ function Featured() {
           <Link to="/property/palm-villa" className="reveal btn-pill btn-outline">Explore the collection →</Link>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 items-stretch">
           <div className="lg:col-span-2 flex flex-col">
             <PropertyCard
               p={{
@@ -198,13 +200,13 @@ function Featured() {
               }}
             />
           </div>
-          <div className="grid grid-cols-1 grid-rows-2 gap-4">
+          <div className="grid grid-cols-1 grid-rows-2 gap-3">
             <PropertyCard p={{ title: "Marina Penthouse", location: "DUBAI MARINA, DUBAI", price: "AED 11,800,000", beds: 3, baths: 4, sqft: "4,100", image: prop2 }} />
             <PropertyCard p={{ title: "Casa del Patio", location: "SAADIYAT ISLAND, ABU DHABI", price: "AED 8,200,000", beds: 4, baths: 5, sqft: "5,600", image: prop3 }} />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3 items-stretch">
 
           <PropertyCard p={{ title: "Palm Grove House", location: "AL BARARI, DUBAI", price: "AED 17,400,000", beds: 5, baths: 6, sqft: "8,900", image: prop4 }} />
           <PropertyCard p={{ title: "Hayat Cove", location: "AL HAMRA, RAS AL KHAIMAH", price: "AED 9,600,000", beds: 4, baths: 4, sqft: "5,200", image: gal5 }} />
@@ -223,7 +225,7 @@ function Why() {
     { num: "04", title: "Beyond the sale", body: "From handover to settling in, we're here after the keys change hands." },
   ];
   return (
-    <section ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
+    <section ref={ref} className="py-8 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-8">
           <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>WHY MED ESTATE</p>
@@ -247,30 +249,24 @@ function Why() {
 
 function Gallery() {
   const ref = useReveal();
-  // ratio = intrinsic width / height, used to size each image so the whole row
-  // shares one height with every picture at its true proportions (no stretching, no gaps)
   const shots = [
-    { img: gal1, label: "Architecture", alt: "Archway to pool", ratio: 4160 / 6240 },
-    { img: gal2, label: "Interior detail", alt: "Terrace at night", ratio: 736 / 1313 },
-    { img: gal3, label: "Material / texture", alt: "Bathroom with sea view", ratio: 736 / 1104 },
-    { img: gal4, label: "Coastline", alt: "Palm trees", ratio: 736 / 1355 },
-    { img: gal5, label: "Pool", alt: "Infinity pool at dawn", ratio: 736 / 1262 },
+    { img: gal1, label: "Architecture", alt: "Archway to pool" },
+    { img: gal2, label: "Interior detail", alt: "Terrace at night" },
+    { img: gal3, label: "Material / texture", alt: "Bathroom with sea view" },
+    { img: gal4, label: "Coastline", alt: "Palm trees" },
+    { img: gal5, label: "Pool", alt: "Infinity pool at dawn" },
   ];
   return (
-    <section id="gallery" ref={ref} className="py-10 px-6" style={{ background: "#F2E4CC" }}>
+    <section id="gallery" ref={ref} className="py-8 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-10">
+        <div className="text-center mb-6">
           <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>THE MED JOURNAL</p>
           <h2 className="reveal mt-3 font-display text-4xl md:text-5xl" style={{ color: "#1F2E38" }}>Places worth looking twice at.</h2>
         </div>
-        <div className="grid grid-cols-2 gap-3 md:flex md:flex-row md:items-stretch">
-          {shots.map((s, i) => (
-            <figure
-              key={s.label}
-              className={`reveal overflow-hidden relative ${i === 4 ? "col-span-2" : ""}`}
-              style={{ flex: `${s.ratio} 1 0%` }}
-            >
-              <img src={s.img} alt={s.alt} className="gallery-img block w-full h-full object-cover md:h-auto md:object-contain" loading="lazy" />
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+          {shots.map((s) => (
+            <figure key={s.label} className="reveal relative aspect-[4/5] overflow-hidden">
+              <img src={s.img} alt={s.alt} className="gallery-img absolute inset-0 block h-full w-full object-cover" loading="lazy" />
               <figcaption className="absolute bottom-3 left-3 font-mono-eyebrow text-[10px] px-2.5 py-1" style={{ color: "#F2E4CC", background: "rgba(31,46,56,0.6)", borderRadius: 999 }}>
                 {s.label}
               </figcaption>
@@ -292,9 +288,9 @@ function Testimonials() {
     { quote: "Sold our Saadiyat villa above asking. They knew the buyer before they knew the property.", name: "Leila H.", place: "Seller, Saadiyat Island" },
   ];
   return (
-    <section id="testimonials" ref={ref} className="py-10 px-6" style={{ background: "#E8D6AE" }}>
+    <section id="testimonials" ref={ref} className="py-8 px-6" style={{ background: "#E8D6AE" }}>
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-10">
+        <div className="text-center mb-6">
           <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>TESTIMONIALS</p>
           <h2 className="reveal mt-3 font-display text-4xl md:text-5xl" style={{ color: "#1F2E38" }}>Testimonials</h2>
         </div>
@@ -348,9 +344,9 @@ function Contact() {
   const [where, setWhere] = useState("Dubai");
   const [budget, setBudget] = useState("AED 5M – 10M");
   return (
-    <section id="contact" ref={ref} className="pt-10 pb-6 px-6" style={{ background: "#F2E4CC" }}>
+    <section id="contact" ref={ref} className="pt-8 pb-5 px-6" style={{ background: "#F2E4CC" }}>
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-10">
+        <div className="text-center mb-6">
           <p className="font-mono-eyebrow reveal" style={{ color: "#1B4B66" }}>GET IN TOUCH</p>
           <h2 className="reveal mt-3 font-display text-4xl md:text-5xl" style={{ color: "#1F2E38" }}>Let's find your place.</h2>
           <p className="reveal mt-4 text-base" style={{ color: "rgba(31,46,56,0.75)" }}>Tell us what you're looking for and we'll take it from there.</p>
